@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #7f1d1d 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 喜庆背景装饰 */
+.festive-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.15) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.08) 0%, transparent 50%);
+}
+
+/* 装饰元素容器 */
+.festive-bg::before,
+.festive-bg::after {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.6;
+  animation: floatDecor 4s ease-in-out infinite;
+}
+
+/* 左上角灯笼 */
+.festive-bg::before {
+  content: '🏮';
+  top: 20px;
+  left: 30px;
+  font-size: 4rem;
+  animation: swingLantern 3s ease-in-out infinite;
+}
+
+/* 右上角灯笼 */
+.festive-bg::after {
+  content: '🏮';
+  top: 20px;
+  right: 30px;
+  font-size: 4rem;
+  animation: swingLantern 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* 灯笼摇摆动画 */
+@keyframes swingLantern {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+/* 装饰浮动动画 */
+@keyframes floatDecor {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* 闪烁星星动画 */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+/* 金色边框效果 */
+.gold-border {
+  border: 3px solid #F59E0B;
+  box-shadow: 
+    0 0 10px rgba(245, 158, 11, 0.3),
+    inset 0 0 10px rgba(245, 158, 11, 0.1);
+}
+
+/* 滚动框样式 */
+.rolling-box {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 4px solid #F59E0B;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 20px rgba(245, 158, 11, 0.4),
+    0 0 40px rgba(245, 158, 11, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* 弹窗动画 */
+.modal-enter-active {
+  animation: modalIn 0.4s ease-out;
+}
+
+.modal-leave-active {
+  animation: modalOut 0.3s ease-in;
+}
+
+@keyframes modalIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-50px);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* 名字滚动动画 */
+.name-rolling {
+  animation: nameScroll 0.08s linear infinite;
+}
+
+@keyframes nameScroll {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 金光闪烁效果 - 强烈版本 */
+.golden-glow {
+  animation: goldenPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes goldenPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px #F59E0B, 0 0 20px #F59E0B, 0 0 30px #F59E0B;
+  }
+  50% {
+    text-shadow: 0 0 20px #FCD34D, 0 0 40px #FCD34D, 0 0 60px #FCD34D;
+  }
+}
+
+/* 标题光效 - 柔和稳定版本 */
+.title-glow {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.6), 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+/* 按钮悬停效果 */
+.btn-festive {
+  background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+  border: 2px solid #F59E0B;
+  color: #FCD34D;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-festive:hover {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-festive:active {
+  transform: translateY(0);
+}
+
+/* 输入框样式 */
+.input-festive {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(245, 158, 11, 0.5);
+  color: white;
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+
+.input-festive:focus {
+  outline: none;
+  border-color: #F59E0B;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
+.input-festive::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
