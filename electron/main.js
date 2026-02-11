@@ -7,7 +7,11 @@ function createWindow() {
     height: 1080,
     webPreferences: {
       nodeIntegration: false,
-      contextIsolation: true
+      contextIsolation: true,
+      // 允许 ES 模块和本地文件访问
+      webSecurity: false,
+      // 允许运行不安全的内容（本地开发）
+      allowRunningInsecureContent: true
     }
   })
 
