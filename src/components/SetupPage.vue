@@ -90,7 +90,7 @@ function handleStart() {
     <div class="w-full max-w-6xl">
       <!-- 标题 -->
       <h1 class="text-4xl font-bold text-center mb-12 text-festive-gold title-glow">
-        🎊 大连市自贸区税务局年会抽奖 🎊
+        🎊 年会抽奖 🎊
       </h1>
       
       <div class="grid md:grid-cols-2 gap-8">

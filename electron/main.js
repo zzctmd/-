@@ -8,48 +8,13 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      // 允许 ES 模块和本地文件访问
-      webSecurity: false,
-      // 允许运行不安全的内容（本地开发）
-      allowRunningInsecureContent: true
+      webSecurity: false
     }
   })
 
-  // 暂时开启开发者工具，方便用户看到错误信息
-  win.webContents.openDevTools()
-
-  // 正确的路径处理
-  // __dirname 在打包后指向 resources/app.asar/electron
-  // 所以 ../dist 会指向 resources/app.asar/dist
+  // 加载打包后的文件
   const indexPath = path.join(__dirname, '../dist/index.html')
-  
-  console.log('=== Electron 调试信息 ===')
-  console.log('是否打包:', app.isPackaged)
-  console.log('__dirname:', __dirname)
-  console.log('加载路径:', indexPath)
-  console.log('========================')
-
-  win.loadFile(indexPath).catch(err => {
-    console.error('❌ 加载失败:', err)
-  })
-  
-  // 监听加载错误
-  win.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL) => {
-    console.error('❌ 页面加载失败!')
-    console.error('错误代码:', errorCode)
-    console.error('错误描述:', errorDescription)
-    console.error('URL:', validatedURL)
-  })
-
-  // 监听页面加载完成
-  win.webContents.on('did-finish-load', () => {
-    console.log('✅ 页面加载完成')
-  })
-
-  // 打印控制台消息
-  win.webContents.on('console-message', (event, level, message) => {
-    console.log(`[浏览器控制台] ${message}`)
-  })
+  win.loadFile(indexPath)
   
   // 隐藏菜单栏
   win.setMenuBarVisibility(false)

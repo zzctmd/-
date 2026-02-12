@@ -14,7 +14,7 @@
   },
   "build": {
     "appId": "com.choujiang.app",
-    "productName": "大连市自贸区税务局年会抽奖",
+    "productName": "年会抽奖",
     "win": {
       "target": "nsis"
     },
